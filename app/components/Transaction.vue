@@ -17,7 +17,16 @@
       <div>
         <UDropdownMenu :items="items" :popper="{ placement: 'bottom-start' }">
           <UButton color="white" variant="ghost" trailing-icon="i-heroicons-ellipsis-horizontal" :loading="isLoading" />
+
+          <template #item="{ item }">
+            <div @click="item.click"
+              class="flex items-center px-2 cursor-pointe">
+              <UIcon :name="item.icon" class="mr-2 text-base" />
+              <span class="!text-base">{{ item.label }}</span>
+            </div>
+          </template>
         </UDropdownMenu>
+
       </div>
     </div>
   </div>
