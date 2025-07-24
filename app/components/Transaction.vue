@@ -20,7 +20,7 @@
 
           <template #item="{ item }">
             <div @click="item.click"
-              class="flex items-center px-2 cursor-pointe">
+              class="flex items-center px-2 cursor-pointer">
               <UIcon :name="item.icon" class="mr-2 text-base" />
               <span class="!text-base">{{ item.label }}</span>
             </div>
