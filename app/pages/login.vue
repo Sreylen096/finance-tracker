@@ -23,7 +23,7 @@
             </div>
         </div>
         <div>
-           <TransactionModal />
+           <TransactionModal v-model="isOpen" @saved="refreshTransactions()" />
         </div>
     </section>
     <section>
@@ -71,7 +71,10 @@ const expenseTotal = computed(
 
 const fetchTransactions = async () => {
     try {
-        const { data, error } = await supabase.from('transactions').select()
+        const { data, error } = await supabase
+        .from('transactions')
+        .select()
+        .order('created_at', { ascending: false })
         if (error) return []
         return data
     } catch {
@@ -102,5 +105,4 @@ const transactionsGroupedByDate = computed(() => {
     return grouped
 })
 
-console.log(transactionsGroupedByDate.value)
 </script>
